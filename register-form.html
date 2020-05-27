@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<meta charset="UTF-8">
+	<title>NVKD - Login</title>
+</head>
+<body>
+	<div class="navbar-fixed">
+	<nav class="teal darken-2">
+		<div class="nav-wrapper">
+			<a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			<a href="register-form.html" class="brand-logo hide-on-med-and-down"><img src="images/logo3.png" alt="logo1" width="30%"></a>
+			<a href="register-form.html" class="brand-logo hide-on-large-only center"><img src="images/logo3.png" alt="logo1" width="31%"></a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="jobs-page.html">Jobs</a></li>
+				<li><a href="sso.html">Register</a></li>
+				<li><a href="login-form.html">Login</a></li>
+				<li><a href="admin-page.html">Admin</a></li>
+			</ul>
+		</div>
+	</nav>
+	</div>
+	<ul class="sidenav teal lighten-5" id="mobile-nav">
+		<li><a href="register-form.html" class="brand-logo hide-on-large-only center"><img src="images/logo3.png" alt="logo1" width="31%"></a></li>
+        <li><a href="index.html" class="text-nav">Home</a></li>
+        <li><a href="jobs-page.html" class="text-nav">Jobs</a></li>
+        <li><a href="sso.html" class="text-nav">Register</a></li>
+        <li><a href="login-form.html" class="text-nav">Login</a></li>
+        <li><a href="admin-page.html" class="text-nav">Admin</a></li>
+    </ul>
+
+	<div class="teal lighten-5">
+		<div class="container">
+			<div class="row" style="margin: 0; padding: 10px 0;">
+				<div class="col s12 m8 offset-m2">
+					<div class="card" style="border-radius: 20px;">
+						<div class="card-content">
+
+							<form action="jobs-page.html">
+
+								<div class="row center">
+									<div class="col s12">
+										<img src="images/logo3.png" alt="logo">
+									</div>
+									<div class="col s12" style="font-size: 4rem;">
+										Register Form
+									</div>
+								</div>
+
+								<div class="row">
+									<!-- <div class="input-field col s12"> -->
+										<!-- <i class="material-icons prefix">album</i> -->
+										<label class="black-text">Member Type</label>
+										<select class="browser-default teal lighten-5" id="tipeMember" style="border: black 1px solid;">
+											<option value="manager">Manager</option>
+											<option value="member">Member</option>
+											<option value="civilian" selected="">Civilian</option>
+										</select>
+									<!-- </div> -->
+									<!-- <div class="input-field col s12"> -->
+										<!-- <i class="material-icons prefix">album</i> -->
+										<label class="black-text">Join Periode</label>
+										<select class="browser-default teal lighten-5" id="tipeWaktu" style="border: black 1px solid;">
+											<option value="1m" selected="">1 Month</option>
+											<option value="3m">3 Month</option>
+											<option value="6m">Half Year</option>
+											<option value="12m">Full Year</option>
+										</select>
+									<!-- </div> -->
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">account_circle</i>
+										<input type="text" id="fullName" class="validate" required placeholder="Full Name">
+										<label for="fullName" class="black-text">Full Name</label>
+									</div>
+
+									<div class="input-field col s12">
+										<i class="material-icons prefix">account_circle</i>
+										<input type="number" id="NIK" class="validate" required placeholder="NIK">
+										<label for="NIK" class="black-text">NIK</label>
+									</div>
+
+									<div class="input-field col s12">
+										<i class="material-icons prefix">accessibility</i>
+										<input type="text" id="username" class="validate" required placeholder="Username">
+										<label for="username" class="black-text">Username</label>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col s12 m12 center">
+										<span onclick="setPassword()" class="waves-effect waves-light btn join">Automatic Password</span>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix" id="vis" onclick="pw(1)" style="cursor: pointer;">visibility_off</i>
+										<input type="password" id="password" class="validate" placeholder="Password" onkeyup="checkStrengthPwd()">
+										<label for="password" class="black-text">Password</label>
+										<span class="password-msg" data-error="wrong" data-success="right"></span>
+									</div>
+
+									<div class="input-field col s12">
+										<i class="material-icons prefix" id="reVis" onclick="pw(2)" style="cursor: pointer;">visibility_off</i>
+										<input type="password" id="rePassword" class="validate" placeholder="Confirm Password" onkeyup="checkMatchPwd()">
+										<label for="rePassword" class="black-text">Re-Password</label>
+										<span class="password2-msg" data-error="wrong" data-success="right"></span>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">account_circle</i>
+										<input type="email" id="email" class="validate" required placeholder="Email">
+										<label for="email" class="black-text">Email</label>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="file-field input-field">
+								    	<div class="waves-effect waves-light btn">
+								    		<span>Upload KTP</span>
+								        <input type="file">
+								      	</div>
+								      	<div class="file-path-wrapper">
+								        	<input class="file-path validate" type="text" placeholder="KTP">
+								      	</div>
+								    </div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">call</i>
+										<input type="tel" id="telephone" onkeyup="checkPhone(1)" placeholder="+628139847255">
+										<label for="telephone" class="black-text">Telephone</label>
+										<span class="phone-msg" data-error="wrong" data-success="right"></span>
+									</div>
+									<div class="input-field col s12">
+										<i class="material-icons prefix">phone</i>
+										<input type="tel" id="handphone" class="validate" required onkeyup="checkPhone(2)" placeholder="+628139847255">
+										<label for="handphone" class="black-text">Handphone</label>
+										<span class="phone2-msg" data-error="wrong" data-success="right"></span>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">account_circle</i>
+										<input type="text" id="profession" class="validate" required placeholder="Profession">
+										<label for="profession" class="black-text">Profession</label>
+									</div>
+
+									<div class="input-field col s12">
+										<i class="material-icons prefix">accessibility</i>
+										<textarea id="skillSet" class="materialize-textarea" placeholder="Skillset"></textarea>
+										<label for="skillSet" class="black-text">Skillset</label>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">account_circle</i>
+										<input type="text" id="address" class="validate" required placeholder="Address">
+										<label for="address" class="black-text">Address</label>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">account_circle</i>
+										<input type="text" id="birthDate" class="datepicker" required placeholder="Jan 01, 2000">
+										<label for="birthDate" class="black-text">Birth Date</label>
+									</div>
+								</div>
+
+								<div class="row center">
+									<a class="waves-effect waves-light btn" onclick="checkInput(event)" type="submit">Register</a>
+									<!-- <div style="text-align: center;"><button type="submit" class="btn" onclick="checkInput(event)">Register</button></div> -->
+									<p>Already have an account, <a href="login-form.html" style="color: #4db6ac">Sign in</a> here!</p>
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="page-footer teal darken-2">
+        <div class="container">
+      	    <div class="row">
+          		<div class="col l6 s12">
+            		<h5 class="white-text">Alamat kantor</h5>
+            		<p class="grey-text text-lighten-4" style="font-size: 15px;"><i class="material-icons" style="font-size: 15px;">location_on</i> JL. Jalanin aja no 21, Cijantung, Jakarta Timur, Jakarta.</p>
+          		</div>
+          		<div class="col l4 offset-l2 s12">
+            		<h5 class="white-text">Contacts</h5>
+	              		<a class="grey-text text-lighten-3" href="#"><i class="material-icons" style="font-size: 31px;">email</i></a>
+	              		<a href="#"><img src="images/icon-fb.png" alt="icon-fb" width="10%"></a>
+	              		<a href="#"><img src="images/icon-tw.png" alt="icon-twitter" width="10%"></a>
+	              		<a href="#"><img src="images/icon-ig.png" alt="icon-ig" width="10%"></a>
+	            	
+	          	</div>
+        	</div>
+      	</div>
+      	<div class="footer-copyright center">
+        	<div class="container">
+        		©2020 Copyright NVKD
+        	</div>
+      	</div>
+    </footer>
+
+	<!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+    	const elems = document.querySelectorAll('.datepicker');
+    	const instances = M.Datepicker.init(elems, {});
+    	var elems2 = document.querySelectorAll('.sidenav');
+        var instances2 = M.Sidenav.init(elems2, {});
+    	var name = sessionStorage.getItem("name");
+        if (name){
+            var fullname = document.querySelector('#fullName');
+            fullname.setAttribute('value',name);
+        }
+		});
+
+		function pw(n){
+            if (n == 1){
+                var p = document.querySelector('#password');
+                var v = document.querySelector('#vis');
+            } else if (n == 2){
+                var p = document.querySelector('#rePassword');
+                var v = document.querySelector('#reVis');
+            }
+            if(v.textContent == 'visibility'){
+            	p.setAttribute('type', 'password');
+	            v.textContent = 'visibility_off';
+            }
+            else{
+	            p.setAttribute('type', 'text');
+	            v.textContent = 'visibility';
+	        }
+        }
+
+        function getPassword() {
+            var length = 10,
+                charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}:,./'<>?",
+                retVal = "";
+            for (let i = 0, n = charset.length; i < length; i++) {
+                retVal += charset.charAt(Math.floor(Math.random() * n));
+            }
+            return retVal;
+        }
+
+        function setPassword(){
+            var p1 = document.querySelector('#password');
+            var p2 = document.querySelector('#rePassword');
+            var msg1 = document.querySelector('.password-msg');
+            var msg2 = document.querySelector('.password2-msg');
+            var val = getPassword();
+            p1.value = val;
+            p2.value = val;
+            if(p1.type == 'password'){
+            	pw(1);
+            }
+            if(msg1.innerHTML.length > 0 || msg2.innerHTML.length > 0){
+            	msg1.innerHTML = '';
+            	msg2.innerHTML = '';
+            }
+            alert("Don't forget to copy your automatic password!");
+        }
+
+        function checkStrengthPwd(){
+            var pw = document.querySelector('#password');
+            var vp = pw.value;
+            var msg = document.querySelector('.password-msg');
+            var next = true;
+            var regex = /^[A-Za-z0-9]+$/;
+            for(let i = 0; i < vp.length; i++){
+            	if(vp[i] == ' '){
+            		msg.innerHTML = '<span style="color: red;">Password cannot contain spacing!</span>';
+            		pw.classList.remove("valid");
+	                pw.classList.add("invalid");
+            		next = false;
+            		checkMatchPwd();
+            		break;
+            	}
+            }
+            if(next){
+	            if (vp.length < 6){
+	                msg.innerHTML = '<span style="color: red;">Password is too short!</span>';
+	                pw.classList.remove("valid");
+	                pw.classList.add("invalid");
+	            } else if (vp === vp.toLowerCase() || vp.match(regex)) {
+	                msg.innerHTML = '<span style="color: red;">Password should contain at least 1 upper case alphabet, numeric, and special character.</span>';
+	                pw.classList.remove("valid");
+	                pw.classList.add("invalid");
+	            } else {
+	                checkMatchPwd();
+	                msg.innerHTML = '';
+	                pw.classList.remove("invalid");
+	                pw.classList.add("valid");
+	            }
+	        }
+        }
+
+        function checkMatchPwd(){
+            var p1 = document.querySelector('#password');
+            var p2 = document.querySelector('#rePassword');
+            var msg = document.querySelector('.password2-msg');
+            if (p1.value != p2.value){
+                msg.innerHTML = '<span style="color: red;">Password not match!</span>';
+                p2.classList.remove("valid");
+                p2.classList.add("invalid");
+            } else {
+                msg.innerHTML = '';
+                p2.classList.remove("invalid");
+                p2.classList.add("valid");
+            }
+        }
+
+        function checkPhone(n){
+            if (n == 1){
+                var selectphone = document.querySelector('#telephone')
+                var phone = selectphone.value;
+                var msg = document.querySelector('.phone-msg');
+            } else if (n == 2){
+                var selectphone = document.querySelector('#handphone')
+                var phone = selectphone.value;
+                var msg = document.querySelector('.phone2-msg');
+            }
+            if (phone.match(/^\+[1-9]{1}[0-9]{3,14}$/)){
+                msg.innerHTML = '';
+                selectphone.classList.remove("invalid");
+                selectphone.classList.add("valid");
+            } else {
+                msg.innerHTML = '<span style="color: red;">Phone number should contain country and area code.</span>';
+                selectphone.classList.remove("valid");
+                selectphone.classList.add("invalid");
+            }
+        }
+
+        function checkInput(event){
+            var input = document.querySelectorAll("input");
+            var error = false;
+            input.forEach(function(item, index, list){
+                if (item.classList.contains("invalid") || item.value == ""){
+                    if (item.id != "phone2"){
+                        error = true;
+                    }
+                }
+            });
+            if(error){
+                event.preventDefault();
+                alert("Registration error. Make sure your information is valid!");
+                
+            } else {
+                var datauname = document.querySelector("#username").value;
+                var dataname = document.querySelector("#fullName").value;
+                var datanik = document.querySelector("#NIK").value;
+                var dataaddress = document.querySelector("#address").value;
+                var datatype = document.querySelector("#tipeMember").value;
+                var dataphone = document.querySelector("#handphone").value;
+                var dataemail = document.querySelector("#email").value;
+                // console.log(datauname);
+                // console.log(dataname);
+                // console.log(datanik);
+                // console.log(dataaddress);
+                // console.log(datatype);
+                // console.log(dataphone);
+
+                sessionStorage.setItem("username", datauname);
+                sessionStorage.setItem("fullName", dataname);
+                sessionStorage.setItem("NIK", datanik);
+                sessionStorage.setItem("address", dataaddress);
+                sessionStorage.setItem("tipe", datatype);
+                sessionStorage.setItem("handphone", dataphone);
+                sessionStorage.setItem("email", dataemail);
+                sessionStorage.setItem("rank", "iron");
+
+                window.location.href = "jobs-page.html";
+            }
+        }
+
+	</script>
+</body>
+</html>

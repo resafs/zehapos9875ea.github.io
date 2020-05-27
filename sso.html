@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<meta charset="UTF-8">
+	<meta name="google-signin-client_id" content="594303707539-8ij80h0q32st6pdaq1l2aj8t52jmcoi1.apps.googleusercontent.com">
+	<title>NVKD - Register Page</title>
+	<style>
+		.pad{
+			margin-top: 20px;
+		}
+		.g-name{
+			font-size: 40px;
+			padding-left: 15px;
+			letter-spacing: 3px;
+			font-weight: bold;
+			color: brown;
+		}
+		.motto{
+			font-size: 19px;
+		}
+		.card{
+			border-radius: 20px;
+			width: 300px;
+		}
+		.tombol-gg {
+		    border: solid 2px red;
+		    padding: 15px;
+		    border-radius: 20px;
+		    background-color: white;
+		    font-weight: bold;
+		    cursor: pointer;
+		}
+		.tombol-fb{
+			border: 2px blue solid;
+			padding: 15px;
+		    border-radius: 20px;
+		    background-color: white;
+		    font-weight: bold;
+		    cursor: pointer;
+		}
+		.tombol-tw{
+			border: 2px lightblue solid;
+			padding: 15px;
+		    border-radius: 20px;
+		    background-color: white;
+		    font-weight: bold;
+		    cursor: pointer;
+		 }
+		.tombol-gt{
+			border: 2px black solid;
+			padding: 15px;
+		    border-radius: 20px;
+		    background-color: white;
+		    font-weight: bold;
+		    cursor: pointer;
+		}
+	</style>
+
+	<script src="https://apis.google.com/js/api:client.js"></script>
+    <script>
+	    var googleUser = {};
+	    var startApp = function() {
+	        gapi.load('auth2', function(){
+	        	// Retrieve the singleton for the GoogleAuth library and set up the client.
+	          	auth2 = gapi.auth2.init({
+		            client_id: '594303707539-8ij80h0q32st6pdaq1l2aj8t52jmcoi1.apps.googleusercontent.com',
+		            cookiepolicy: 'single_host_origin',
+		            // Request scopes in addition to 'profile' and 'email'
+		            //scope: 'additional_scope'
+
+	        	});
+	          	attachSignin(document.getElementById('google'));
+	        	});
+	    	};
+
+	    function attachSignin(element) {
+	        console.log(element.id);
+	        auth2.attachClickHandler(element, {},
+	            function(googleUser) {
+	              sessionStorage.setItem("name", googleUser.getBasicProfile().getName());
+	              window.location.href = "register-form.html";
+	              // document.getElementById('name').innerText = "Signed in: " +
+	              //     googleUser.getBasicProfile().getName();
+	            }, function(error) {
+	              alert(JSON.stringify(error, undefined, 2));
+	            });
+	    }
+    </script>
+
+</head>
+<body>
+	<div class="navbar-fixed">
+	<nav class="teal darken-2">
+		<div class="nav-wrapper">
+			<a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			<a href="sso.html" class="brand-logo hide-on-med-and-down"><img src="images/logo3.png" alt="logo1" width="30%"></a>
+			<a href="sso.html" class="brand-logo hide-on-large-only center"><img src="images/logo3.png" alt="logo1" width="31%"></a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="jobs-page.html">Jobs</a></li>
+				<li><a href="sso.html">Register</a></li>
+				<li><a href="login-form.html">Login</a></li>
+				<li><a href="admin-page.html">Admin</a></li>
+			</ul>
+		</div>
+	</nav>
+	</div>
+	<ul class="sidenav teal lighten-5" id="mobile-nav">
+		<li><a href="sso.html" class="brand-logo hide-on-large-only center"><img src="images/logo3.png" alt="logo1" width="31%"></a></li>
+        <li><a href="index.html" class="text-nav">Home</a></li>
+        <li><a href="jobs-page.html" class="text-nav">Jobs</a></li>
+        <li><a href="sso.html" class="text-nav">Register</a></li>
+        <li><a href="login-form.html" class="text-nav">Login</a></li>
+        <li><a href="admin-page.html" class="text-nav">Admin</a></li>
+        <li><a href="index.html" onclick="logOut(event)">Logout</a></li>
+    </ul>
+
+	<div class="teal lighten-5 kotak">
+		<div class="container">
+			<div class="row center" style="margin: 0;">
+				<div class="col s8 m8 offset-m4 offset-s1">
+					<div class="card">
+		                <div class="card-content">
+		                	<div class="card-image">
+								<img src="images/logo3.png" alt="Logo">
+							</div>
+		                    <p class="font-fira" style="margin-top: 0px; margin-bottom: 25px; font-size: 25px; text-align: center;">Registration</p>
+		                    <div style="margin: 15px 10px;" id="google"><span class="tombol-gg" style="display: block;"><img src="images/icon-gg.png" style="margin-right: 15px;" width="12%"> <p style="margin-top: 4px;">Register with Google</p></span></div>
+		                    <div id="name"></div>
+		                    <script>startApp();</script>
+		                    <div style="margin: 15px 10px;"><a href="register-form.html" style="color: inherit;"><span class="tombol-fb" style="display: block;"><img src="images/icon-fb.png" style="margin-right: 15px;" width="12%"> <p style="margin-top: 4px;">Register with Facebook</p></span></div>
+		                    <div style="margin: 15px 10px;"><a href="register-form.html" style="color: inherit;"><span class="tombol-tw" style="display: block;"><img src="images/icon-tw.png" style="margin-right: 15px;" width="12%"> <p style="margin-top: 4px;">Register with Twitter</p></span></div>
+		                    <div style="margin: 15px 10px;"><a href="register-form.html" style="color: inherit;"><span class="tombol-gt" style="display: block;"><img src="images/icon-gt.png" style="margin-right: 15px;" width="12%"> <p style="margin-top: 4px;">Register with Github</p></span></div>
+		                    <p class="hide-on-med-and-down" style="margin-top: 20px;">Already have an account? <a href="login-form.html"><br>Sign in</a> here.</p>
+		                    <p class="hide-on-large-only" style="margin-top: 20px;">Already have an account? <a href="login-form.html">Sign in</a> here.</p>
+		                </div>
+		            </div>
+		        </div>
+	        </div>
+		</div>
+	</div>
+
+	<footer class="page-footer teal darken-2">
+        <div class="container">
+      	    <div class="row">
+          		<div class="col l6 s12">
+            		<h5 class="white-text">Alamat kantor</h5>
+            		<p class="grey-text text-lighten-4" style="font-size: 15px;"><i class="material-icons" style="font-size: 15px;">location_on</i> JL. Jalanin aja no 21, Cijantung, Jakarta Timur, Jakarta.</p>
+          		</div>
+          		<div class="col l4 offset-l2 s12">
+            		<h5 class="white-text">Contacts</h5>
+	              		<a class="grey-text text-lighten-3" href="#"><i class="material-icons" style="font-size: 31px;">email</i></a>
+	              		<a href="#"><img src="images/icon-fb.png" alt="icon-fb" width="10%"></a>
+	              		<a href="#"><img src="images/icon-tw.png" alt="icon-twitter" width="10%"></a>
+	              		<a href="#"><img src="images/icon-ig.png" alt="icon-ig" width="10%"></a>
+	            	
+	          	</div>
+        	</div>
+      	</div>
+      	<div class="footer-copyright center">
+        	<div class="container">
+        		©2020 Copyright NVKD
+        	</div>
+      	</div>
+    </footer>
+
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+    	var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, {});
+		});
+	</script>
+
+</body>
+</html>

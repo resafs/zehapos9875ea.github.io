@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<meta charset="UTF-8">
+	<title>NVKD - Login</title>
+	<style>
+		.wrap {
+			display: flex;
+			justify-content: space-between;
+			margin: 0px 10px;
+			padding: 10px;
+			font-size: 15px;
+		}
+		@media only screen and (max-width:631px){
+			html{
+				font-size: 15px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="navbar-fixed">
+	<nav class="teal darken-2">
+		<div class="nav-wrapper">
+			<a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			<a href="login-form.html" class="brand-logo hide-on-med-and-down"><img src="images/logo3.png" alt="logo1" width="30%"></a>
+			<a href="login-form.html" class="brand-logo hide-on-large-only center"><img src="images/logo3.png" alt="logo1" width="31%"></a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="jobs-page.html">Jobs</a></li>
+				<li><a href="sso.html">Register</a></li>
+				<li><a href="login-form.html">Login</a></li>
+				<li><a href="admin-page.html">Admin</a></li>
+			</ul>
+		</div>
+	</nav>
+	</div>
+	<ul class="sidenav teal lighten-5" id="mobile-nav">
+		<li><a href="login-form.html" class="brand-logo hide-on-large-only center"><img src="images/logo3.png" alt="logo1" width="31%"></a></li>
+        <li><a href="index.html" class="text-nav">Home</a></li>
+        <li><a href="jobs-page.html" class="text-nav">Jobs</a></li>
+        <li><a href="sso.html" class="text-nav">Register</a></li>
+        <li><a href="login-form.html" class="text-nav">Login</a></li>
+        <li><a href="admin-page.html" class="text-nav">Admin</a></li>
+    </ul>
+
+	<div class="teal lighten-5">
+		<div class="container">
+			<div class="row" style="margin-bottom: 0; padding: 10px 0;">
+				<div class="col s12 m8 offset-m2">
+					<div class="card" style="border-radius: 20px;">
+						<div class="card-content">
+							<form action="members.html">
+
+								<div class="row center" style="margin: 0;">
+									<div class="col s12">
+										<img src="images/logo3.png" alt="logo">
+									</div>
+									<div class="col s12" style="font-size: 4rem;">
+										Login Form
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">accessibility</i>
+										<input type="text" id="username" class="validate" required>
+										<label for="username" class="black-text">Username</label>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="input-field col s12">
+										<i class="material-icons prefix">album</i>
+										<input type="password" id="password" class="validate" required>
+										<label for="password" class="black-text">Password</label>
+									</div>
+								</div>
+
+								<div class="row">
+									<p style="text-align: center;">Jawablah pertanyaan berikut: <b>Apakah ibu dari ibu atau bapak kita adalah kakek kita?</b> (ya/tidak)</p>
+									<div class="input-field col s12">
+										<i class="material-icons prefix">accessibility</i>
+										<input type="text" id="validation" class="validate" placeholder="Ya/Tidak" required>
+										<label for="validation" class="black-text">Validation</label>
+									</div>
+								</div>
+
+								<div class="row center">
+									<a class="waves-effect waves-light btn">Login</a>
+									<p>You haven't an account, <a href="sso.html" style="color: #4db6ac">Sign Up</a> here!</p>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="page-footer teal darken-2">
+        <div class="container">
+      	    <div class="row">
+          		<div class="col l6 s12">
+            		<h5 class="white-text">Alamat kantor</h5>
+            		<p class="grey-text text-lighten-4" style="font-size: 15px;"><i class="material-icons" style="font-size: 15px;">location_on</i> JL. Jalanin aja no 21, Cijantung, Jakarta Timur, Jakarta.</p>
+          		</div>
+          		<div class="col l4 offset-l2 s12">
+            		<h5 class="white-text">Contacts</h5>
+	              		<a class="grey-text text-lighten-3" href="#"><i class="material-icons" style="font-size: 31px;">email</i></a>
+	              		<a href="#"><img src="images/icon-fb.png" alt="icon-fb" width="10%"></a>
+	              		<a href="#"><img src="images/icon-tw.png" alt="icon-twitter" width="10%"></a>
+	              		<a href="#"><img src="images/icon-ig.png" alt="icon-ig" width="10%"></a>
+	            	
+	          	</div>
+        	</div>
+      	</div>
+      	<div class="footer-copyright center">
+        	<div class="container">
+        		©2020 Copyright NVKD
+        	</div>
+      	</div>
+    </footer>
+
+	<!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+    	const elems = document.querySelectorAll('.datepicker');
+    	const instances = M.Datepicker.init(elems, {});
+    	var elems2 = document.querySelectorAll('.sidenav');
+        var instances2 = M.Sidenav.init(elems2, {});
+		});
+	</script>
+</body>
+</html>

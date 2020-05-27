@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<meta charset="UTF-8">
+	<title>NVKD - Admin Page</title>
+
+	<style>
+		.exit{
+			color: red;
+		}
+		p.card-title.exit{
+			font-weight: bold;
+		}
+		.kotak{
+			padding-top: 15px;
+		}
+		.card{
+			border-radius: 10px;
+		}
+		.k-teks, .k-isi{
+			 margin: 0;
+			 padding: 0;
+			 /*font-weight: bold;*/
+		}
+		.k-teks{
+			font-weight: bold;
+		}
+		.kartuku{
+			background-color: #4db6ac;
+		}
+		.card .card-reveal{
+			background-color: #4db6ac;
+		}
+	</style>
+</head>
+<body>
+	<div class="navbar-fixed">
+	<nav class="teal darken-2">
+		<div class="nav-wrapper">
+			<a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			<a href="admin-page.html" class="brand-logo hide-on-med-and-down"><img src="images/logo3.png" alt="logo1" width="30%"></a>
+			<a href="admin-page.html" class="brand-logo hide-on-large-only center"><img src="images/logo3.png" alt="logo1" width="31%"></a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="jobs-page.html">Jobs</a></li>
+				<li><a href="index.html">Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+	</div>
+	<ul class="sidenav teal lighten-5" id="mobile-nav">
+		<li><a href="admin-page.html" class="brand-logo hide-on-large-only center"><img src="images/logo3.png" alt="logo1" width="31%"></a></li>
+        <li><a href="jobs-page.html" class="text-nav">Jobs</a></li>
+        <li><a href="index.html" class="text-nav">Logout</a></li>
+    </ul>
+
+	<div class="teal lighten-5 kotak">
+
+		<div id="modal-ep" class="modal">
+            <div class="modal-content" style="text-align:center;">
+                <h4>Edit Profile</h4>
+                <div class="row">
+                  	<div class="col s12">
+                    	<div class="input-field">
+                      		<input placeholder="New Full Name" id="fullname-new" type="text" class="validate">
+                      		<label for="fullname-new">New Full Name</label>
+                    	</div>
+                    	<div class="input-field">
+                      		<input placeholder="New Address" id="address-new" type="text" class="validate">
+                      		<label for="address-new">New Address</label>
+                    	</div>
+                    	<div class="input-field">
+                      		<input placeholder="New Phone" id="phone-new" type="text" class="validate">
+                      		<label for="phone-new">New Phone</label>
+                    	</div>
+                  	</div>
+                </div>
+            </div>
+            <div style="text-align:center; margin-bottom: 15px;">
+                <a class="modal-close waves-effect waves-green btn">Cancel</a>
+                <a class="modal-close waves-effect waves-green btn">Submit</a>
+            </div>
+        </div>
+
+		<div id="modal-pj" class="modal">
+            <div class="modal-content" style="text-align:center;">
+                <h4>New Job</h4>
+                <div class="row">
+                    <div class="col s12">
+                    	<div class="input-field">
+                      		<input placeholder="Job Title" id="job-title" type="text" class="validate">
+                      		<label for="job-title">Job Title</label>
+                      	</div>
+	                    <div class="input-field">
+	                      	<input placeholder="Job Description" id="job-description" type="email" class="validate">
+	                      	<label for="job-description">Job Description</label>
+	                    </div>
+	                    <div class="input-field">
+	                      	<input placeholder="150" id="job-reward" type="number" class="validate">
+	                      	<label for="job-reward">Job Reward ($ in USD) </label>
+	                    </div>
+	                    	<div style="text-align: left;">
+	                    	<label>Job Required Rank</label>
+	                    	<select id="job-rank" name="job-rank" class="browser-default" style="margin-top: 5px;">
+			                    <option value="Iron" selected>Iron</option>
+			                    <option value="Silver">Silver</option>
+			                    <option value="Gold">Gold</option>
+			                    <option value="Platinum">Platinum</option>
+	                    	</select>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+
+           	<div style="text-align:center; margin-bottom: 15px;">
+                <a class="modal-close waves-effect waves-green btn">Cancel</a>
+                <a class="modal-close waves-effect waves-green btn">Submit</a>
+            </div>
+        </div>
+				
+		<div class="row" style="margin-bottom: 0;">
+		    <div class="col s12 m4 offset-m1">
+		        <div class="card teal lighten-5">
+		        <div class="card-image">
+		            <img src="yoi.jpeg" style="width: 250px; margin: auto; padding-top: 5px;">
+		            <!-- <span class="card-title">HELLO</span> -->
+		            <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" data-target='modal-ep'><i class="material-icons">edit</i></a>
+		        </div>
+		        <div class="card-content">
+		            <p style="text-align: center; font-weight: bold;">Administrator</p>
+		            <p><b>Nama:</b><span id="fullName"> Resa Fajar Sukma</span></p>
+		            <p><b>NIK:</b> 1249871419812</p>
+		            <p><b>Alamat:</b> Dimana aja 30, Indonesia</p>
+		            <p><b>Telp:</b> -</p>
+		            <p><b>Handphone:</b> +628123456789</p>
+		        </div>
+		        </div>
+		    </div>
+
+		    <div class="col hide-on-small-only m6">
+		    	<p style="text-align: center; font-weight: bold; color: #f06292; font-size: 35px;">Hey, Resa Fajar Sukma!</p>
+		    	<p style="text-align: center; font-weight: bold; color: #f06292; font-size: 20px;">History</p>
+			    <div class="row center" style="margin-left: 10px;">
+                    <div class="card">
+                        <div class="card-content col s3">
+                   		    <p style="font-size: 25px; color: #4db6ac;"><b>1,600,000</b></p>
+                        	<p style="font-size: 20px; color: #4db6ac; padding-left: 15px;">Members</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                      	<div class="card-content col s3 offset-m1">
+                        	<p style="font-size: 25px; color: #4db6ac;"><b>1,000,999</b></p>
+                        	<p style="font-size: 20px; color: #4db6ac; padding-left: 14px;">Jobs</p>
+                      	</div>
+                    </div>
+                    <div class="card">
+                      	<div class="card-content col s3 offset-m1">
+                        	<p style="font-size: 25px; color: #4db6ac;"><b>$1,000,921</b></p>
+                        	<p style="font-size: 20px; color: #4db6ac; padding-left: 27px;">Earnings</p>
+                      	</div>
+                    </div>
+                </div>
+		    </div>
+
+		    <div class="col hide-on-large-only center" style="padding-left: 40px">
+		    	<p style="font-weight: bold; color: #f06292; font-size: 35px;">Hey, <span id="nama3">Resa Fajar Sukma!</span></p>
+		    	<p style="font-weight: bold; color: #f06292; font-size: 20px;">History</p>
+			    <div class="row center" style="margin-left: 10px;">
+                    <div class="card-content col s12">
+               		    <p style="font-size: 25px; color: #4db6ac;"><b><span id="pj2">1,600,000</span></b></p>
+                    	<p style="font-size: 20px; color: #4db6ac;">Members</p>
+                    </div>
+                  	<div class="card-content col s12">
+                    	<p style="font-size: 25px; color: #4db6ac;"><b><span id="fj2">1,000,999</span></b></p>
+                    	<p style="font-size: 20px; color: #4db6ac;">Jobs</p>
+                  	</div>
+                  	<div class="card-content col s12">
+                    	<p style="font-size: 25px; color: #4db6ac;"><b><span id="earn2">$1,000,921</span></b></p>
+                    	<p style="font-size: 20px; color: #4db6ac;">Earnings</p>
+                  	</div>
+                </div>
+		    </div>
+
+		</div>
+		            
+	</div>
+
+	<div class="row" style="margin-bottom: 0;">
+		<ul class="tabs teal lighten-5">
+	        <li class="tab col s6"><a class="active" href="#test1">Users</a></li>
+	        <li class="tab col s6"><a href="#test2">Jobs Posted</a></li>
+	    </ul>
+	</div>
+
+  	<div id="test1">
+
+		<div class="row">
+			<ul class="tabs blue lighten-4">
+		        <li class="tab col s6" style="border: 1px solid #fff; border-top: 0;"><a class="active" href="#admin" style="color: #000;">Admin</a></li>
+		        <li class="tab col s6" style="border: 1px solid #fff; border-top: 0;"><a href="#member" style="color: #000;">Member</a></li>
+		    </ul>
+		</div>
+
+		<div id="admin">
+			<div class="container">
+
+				<div class="row">
+					<div class="col s6 m6">
+						<div class="card kartuku">
+		    				<div class="card-image waves-effect waves-block waves-light">
+		      					<img class="activator" src="yoi2.jpeg">
+		    				</div>
+		    				<div class="card-content">
+		      					<span class="card-title activator grey-text text-darken-4">Resa Fajar Sukma</span>
+		      					<span style="font-weight: bold;">Investor</span>
+		    				</div>
+		    				<div class="card-reveal">
+		      					<span class="card-title grey-text text-darken-4 center" style="font-weight: bold;">Resa Fajar Sukma</span>
+						        <p class="k-teks" style="padding-top: 6px;">NIK:<br><p class="k-isi">81723971704917</p></p>
+						        <p class="k-teks">Alamat:<br><p class="k-isi">Hello world 92, Indonesia</p></p>
+						        <p class="k-teks">Email:<br><p class="k-isi">rejars66@gmail.com</p></p>
+						        <p class="k-teks">Telp:<p class="k-isi">-</p></p>
+						        <p class="k-teks">Handphone:<p class="k-isi">+6281234567890</p></p>
+						        <p class="k-teks">Kelebihan:</p>
+						        <ol type="disc">
+							      <li style="margin: 0; padding: 0;">Melihat dan menilai tata letak web.</li>
+							      <li>Mengatur maintenance web.</li>
+							      <li>Upload data ke web.</li>
+							  	</ol>
+							  	<p class="card-title exit">Close</p>
+		  	  				</div>
+		    			</div>
+	    			</div>
+
+	    			<div class="col s6 m6">
+						<div class="card kartuku">
+		    				<div class="card-image waves-effect waves-block waves-light">
+		      					<img class="activator" src="yoi2.jpeg">
+		    				</div>
+		    				<div class="card-content">
+		      					<span class="card-title activator grey-text text-darken-4">Resa Fajar Sukma</span>
+		      					<span style="font-weight: bold;">Project Manager</span>
+		    				</div>
+		    				<div class="card-reveal kartuku">
+		      					<span class="card-title grey-text text-darken-4 center" style="font-weight: bold;">Resa Fajar Sukma</span>
+						        <p class="k-teks" style="padding-top: 6px;">NIK:<br><p class="k-isi">81723971704917</p></p>
+						        <p class="k-teks">Alamat:<br><p class="k-isi">Hello world 92, Indonesia</p></p>
+						        <p class="k-teks">Email:<br><p class="k-isi">rejars66@gmail.com</p></p>
+						        <p class="k-teks">Telp:<p class="k-isi">-</p></p>
+						        <p class="k-teks">Handphone:<p class="k-isi">+6281234567890</p></p>
+						        <p class="k-teks">Kelebihan:</p>
+						        <ol type="disc">
+							      <li style="margin: 0; padding: 0;">Melihat dan menilai tata letak web.</li>
+							      <li>Mengatur maintenance web.</li>
+							      <li>Upload data ke web.</li>
+							  	</ol>
+							  	<p class="card-title exit">Close</p>
+		  	  				</div>
+		    			</div>
+	    			</div>
+
+	    		</div>
+
+	    	</div>
+	    </div>
+
+	    <div id="member">
+			<div class="container">
+
+				<div class="row">
+					<div class="col s6 m6">
+						<div class="card kartuku">
+		    				<div class="card-image waves-effect waves-block waves-light">
+		      					<img class="activator" src="yoi.jpeg">
+		    				</div>
+		    				<div class="card-content">
+		      					<span class="card-title activator grey-text text-darken-4">Resa Fajar Sukma</span>
+		      					<p style="font-weight: bold;">Designer Web</p>
+		      					<p class="rank">platinum<p> <!-- Nanti akan dicari lewat DOM tentang class rank. Dan diganti sesuai rank nya. -->
+		    				</div>
+		    				<div class="card-reveal">
+		      					<span class="card-title grey-text text-darken-4 center" style="font-weight: bold;">Resa Fajar Sukma</span>
+		      					<p class="k-teks" style="padding-top: 6px;">Username:<br><p class="k-isi">rfajars77</p></p>
+						        <p class="k-teks" >NIK:<br><p class="k-isi">81723971704917</p></p>
+						        <p class="k-teks" >Alamat:<br><p class="k-isi">Hello world 92, Indonesia</p></p>
+						        <p class="k-teks" >Email<br><p class="k-isi">rejars66@gmail.com</p></p>
+						        <p class="k-teks" >Telp:<p class="k-isi">-</p></p>
+						        <p class="k-teks" >Handphone:<br><p class="k-isi">+6281234567890</p></p>
+						        <p class="k-teks" >Keahlian:</p>
+						        <ol type="disc" style="padding-top: -500px">
+							      <li>Mengatur tata letak web.</li>
+							      <li>Maintenance web.</li>
+							      <li>Upload data ke web.</li>
+							  	</ol>
+							  	<p class="card-title exit">Close</p>
+		  	  				</div>
+		    			</div>
+	    			</div>
+
+	    			<div class="col s6 m6">
+						<div class="card kartuku">
+		    				<div class="card-image waves-effect waves-block waves-light">
+		      					<img class="activator" src="yoi.jpeg">
+		    				</div>
+		    				<div class="card-content">
+		      					<span class="card-title activator grey-text text-darken-4"> Resa Fajar Sukma</span>
+		      					<p style="font-weight: bold;">Designer Web</p>
+		      					<p class="rank">gold<p> <!-- Nanti akan dicari lewat DOM tentang class rank. Dan diganti sesuai rank nya. -->
+		    				</div>
+		    				<div class="card-reveal">
+		      					<span class="card-title grey-text text-darken-4 center" style="font-weight: bold;">Resa Fajar Sukma</span>
+		      					<p class="k-teks" style="padding-top: 6px;">Username:<br><p class="k-isi">rfajars77</p></p>
+						        <p class="k-teks" >NIK:<br><p class="k-isi">81723971704917</p></p>
+						        <p class="k-teks" >Alamat:<br><p class="k-isi">Hello world 92, Indonesia</p></p>
+						        <p class="k-teks" >Email<br><p class="k-isi">rejars66@gmail.com</p></p>
+						        <p class="k-teks" >Telp:<p class="k-isi">-</p></p>
+						        <p class="k-teks" >Handphone:<br><p class="k-isi">+6281234567890</p></p>
+						        <p class="k-teks" >Keahlian:</p>
+						        <ol type="disc" style="padding-top: -500px">
+							      <li>Mengatur tata letak web.</li>
+							      <li>Maintenance web.</li>
+							      <li>Upload data ke web.</li>
+							  	</ol>
+							  	<p class="card-title exit">Close</p>
+		  	  				</div>
+		    			</div>
+	    			</div>
+
+	    		</div>
+
+	    	</div>
+	    </div>
+    </div>
+
+  	</div>
+	<div id="test2">
+		<div class="row">
+			<ul class="tabs blue lighten-4">
+		        <li class="tab col s4" style="border: 1px solid #fff; border-top: 0;"><a class="active" href="#posted" style="color: #000;">Posted</a></li>
+		        <li class="tab col s4" style="border: 1px solid #fff; border-top: 0;"><a href="#taken" style="color: #000;">Taken</a></li>
+		        <li class="tab col s4" style="border: 1px solid #fff; border-top: 0;"><a href="#finished" style="color: #000;">Finished</a></li>
+		    </ul>
+		</div>
+
+	
+		<div id="posted">
+
+			<div class="container">
+
+				<div class="row">
+					<div class="posted-jobs">
+						<a class="modal-trigger" data-target='modal-pj'>
+							<span>
+							<span style="font-size: 20px;">Posting Job</span>
+							<i class="material-icons" style="cursor: pointer;">add_circle_outline</i>
+							</span>
+						</a>
+				    	<h3 class="center-align" style="font-weight: bold;">Jobs Available</h3>
+				    </div>
+
+				    <div class="col s12 m6">
+				    	<div class="card kartuku">
+				        	<div class="card-content">
+				            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+				            	<p><b>Requirentment skill:</b> Programming</p><br>
+				            	<p><b>Rank: </b><span class="rank">gold</span></p><br>
+				            	<p><b>Request:</b> Make a companion page.</p><br>
+				            	<!-- <ol type="1">
+				            		<li>Make a companion page.</li>
+				            	</ol> -->
+				            	<p><b>Click the title for detail.</b></p>
+				          	</div>
+				          	<div class="card-reveal">
+		      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+		      					<p><b>Detail:</b> Page for telling about our company.</p>
+						        <p><b>Rank:</b> <span class="rank">gold</span></p>
+						        <p><b>Reward:</b> $4,000</p>
+						        <p><b>Issuer:</b> Resa Fajar S.</p>
+						        <p><b>Time limit:</b> 4 Hours</p>
+						        <p><b>Status:</b> Waiting</p>
+							  	<p class="card-title exit">Close</p>
+		  	  				</div>
+				        </div>
+				    </div>
+
+				    <div class="col s12 m6">
+				    	<div class="card kartuku">
+				        	<div class="card-content">
+				            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+				            	<p><b>Requirentment skill:</b> Programming</p><br>
+				            	<p><b>Rank: </b><span class="rank">platinum</span></p><br>
+				            	<p><b>Request:</b> Make a companion page.</p><br>
+				            	<!-- <ol type="1">
+				            		<li>Make a companion page.</li>
+				            	</ol> -->
+				            	<p><b>Click the title for detail.</b></p>
+				          	</div>
+				          	<div class="card-reveal">
+		      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+		      					<p><b>Detail:</b> Page for telling about our company.</p>
+						        <p><b>Rank:</b> <span class="rank">platinum</span></p>
+						        <p><b>Reward:</b> $4,000</p>
+						        <p><b>Issuer:</b> Resa Fajar S.</p>
+						        <p><b>Time limit:</b> 4 Hours</p>
+						        <p><b>Status:</b> Waiting</p>
+							  	<p class="card-title exit">Close</p>
+		  	  				</div>
+				        </div>
+				    </div>
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<div id="taken">
+
+			<div class="container">
+
+				<div class="row">
+					<div class="posted-jobs">
+				    	<h3 class="center-align" style="font-weight: bold;">Jobs Taken</h3>
+				    </div>
+
+				    <div class="col s12 m6">
+				    	<div class="card kartuku">
+				        	<div class="card-content">
+				            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+				            	<p><b>Requirentment skill:</b> Programming</p><br>
+				            	<p><b>Rank: </b><span class="rank">gold</span></p><br>
+				            	<p><b>Request:</b> Make a companion page.</p><br>
+				            	<!-- <ol type="1">
+				            		<li>Make a companion page.</li>
+				            	</ol> -->
+				            	<p><b>Click the title for detail.</b></p>
+				          	</div>
+				          	<div class="card-reveal">
+		      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+		      					<p><b>Detail:</b> Page for telling about our company.</p>
+						        <p><b>Rank:</b> <span class="rank">gold</span></p>
+						        <p><b>Reward:</b> $4,000</p>
+						        <p><b>Issuer:</b> Resa Fajar S.</p>
+						        <p><b>Time limit:</b> 4 Hours</p>
+						        <p><b>Status:</b> Waiting</p>
+							  	<p class="card-title exit">Close</p>
+		  	  				</div>
+				        </div>
+				    </div>
+
+				    <div class="col s12 m6">
+				    	<div class="card kartuku">
+				        	<div class="card-content">
+				            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+				            	<p><b>Requirentment skill:</b> Programming</p><br>
+				            	<p><b>Rank: </b><span class="rank">platinum</span></p><br>
+				            	<p><b>Request:</b> Make a companion page.</p><br>
+				            	<!-- <ol type="1">
+				            		<li>Make a companion page.</li>
+				            	</ol> -->
+				            	<p><b>Click the title for detail.</b></p>
+				          	</div>
+				          	<div class="card-reveal">
+		      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+		      					<p><b>Detail:</b> Page for telling about our company.</p>
+						        <p><b>Rank:</b> <span class="rank">platinum</span></p>
+						        <p><b>Reward:</b> $4,000</p>
+						        <p><b>Issuer:</b> Resa Fajar S.</p>
+						        <p><b>Time limit:</b> 4 Hours</p>
+						        <p><b>Status:</b> Waiting</p>
+							  	<p class="card-title exit">Close</p>
+		  	  				</div>
+				        </div>
+				    </div>
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<div id="finished">
+			
+			<div class="container">
+
+				<div class="row">
+					<div class="posted-jobs">
+				    	<h3 class="center-align" style="font-weight: bold;">Jobs Finished</h3>
+				    </div>
+
+				    <div class="col s12 m6">
+				    	<div class="card kartuku">
+				        	<div class="card-content">
+				            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+				            	<p><b>Requirentment skill:</b> Programming</p><br>
+				            	<p><b>Rank: </b><span class="rank">gold</span></p><br>
+				            	<p><b>Request:</b> Make a companion page.</p><br>
+				            	<!-- <ol type="1">
+				            		<li>Make a companion page.</li>
+				            	</ol> -->
+				            	<p><b>Click the title for detail.</b></p>
+				          	</div>
+				          	<div class="card-reveal">
+		      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+		      					<p><b>Detail:</b> Page for telling about our company.</p>
+						        <p><b>Rank:</b> <span class="rank">gold</span></p>
+						        <p><b>Reward:</b> $4,000</p>
+						        <p><b>Issuer:</b> Resa Fajar S.</p>
+						        <p><b>Time limit:</b> 4 Hours</p>
+						        <p><b>Status:</b> Waiting</p>
+							  	<p class="card-title exit">Close</p>
+		  	  				</div>
+				        </div>
+				    </div>
+
+				    <div class="col s12 m6">
+				    	<div class="card kartuku">
+				        	<div class="card-content">
+				            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+				            	<p><b>Requirentment skill:</b> Programming</p><br>
+				            	<p><b>Rank: </b><span class="rank">platinum</span></p><br>
+				            	<p><b>Request:</b> Make a companion page.</p><br>
+				            	<!-- <ol type="1">
+				            		<li>Make a companion page.</li>
+				            	</ol> -->
+				            	<p><b>Click the title for detail.</b></p>
+				          	</div>
+				          	<div class="card-reveal">
+		      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+		      					<p><b>Detail:</b> Page for telling about our company.</p>
+						        <p><b>Rank:</b> <span class="rank">platinum</span></p>
+						        <p><b>Reward:</b> $4,000</p>
+						        <p><b>Issuer:</b> Resa Fajar S.</p>
+						        <p><b>Time limit:</b> 4 Hours</p>
+						        <p><b>Status:</b> Waiting</p>
+							  	<p class="card-title exit">Close</p>
+		  	  				</div>
+				        </div>
+				    </div>
+
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+	
+	<footer class="page-footer teal darken-2">
+        <div class="container">
+      	    <div class="row">
+          		<div class="col l6 s12">
+            		<h5 class="white-text">Alamat kantor</h5>
+            		<p class="grey-text text-lighten-4" style="font-size: 15px;"><i class="material-icons" style="font-size: 15px;">location_on</i> JL. Jalanin aja no 21, Cijantung, Jakarta Timur, Jakarta.</p>
+          		</div>
+          		<div class="col l4 offset-l2 s12">
+            		<h5 class="white-text">Contacts</h5>
+	              		<a class="grey-text text-lighten-3" href="#"><i class="material-icons" style="font-size: 31px;">email</i></a>
+	              		<a href="#"><img src="images/icon-fb.png" alt="icon-fb" width="10%"></a>
+	              		<a href="#"><img src="images/icon-tw.png" alt="icon-twitter" width="10%"></a>
+	              		<a href="#"><img src="images/icon-ig.png" alt="icon-ig" width="10%"></a>
+	            	
+	          	</div>
+        	</div>
+      	</div>
+      	<div class="footer-copyright center">
+        	<div class="container">
+        		©2020 Copyright NVKD
+        	</div>
+      	</div>
+    </footer>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function(){
+			const element = document.querySelectorAll('.tabs');
+			const instance = M.Tabs.init(element[0], {});
+			const instance1 = M.Tabs.init(element[1], {});
+			const instance2 = M.Tabs.init(element[2], {});
+			var elems2 = document.querySelectorAll('.sidenav');
+	        var instances3 = M.Sidenav.init(elems2, {});
+	        const elems3 = document.querySelectorAll('.modal');
+        	const instances4 = M.Modal.init(elems3, {});
+			const rank = document.querySelectorAll('.rank');
+			for(let i = 0; i < rank.length; i++){
+				if(rank[i].innerHTML == 'platinum'){
+					rank[i].style.color='rgb(200,200,200)';
+					rank[i].style.fontWeight='bold';
+					rank[i].innerHTML='PLATINUM';
+				}
+				else if(rank[i].innerHTML == 'gold'){
+					rank[i].style.color='gold';
+					rank[i].style.fontWeight='bold';
+					rank[i].innerHTML='GOLD';
+				}
+				else if(rank[i].innerHTML == 'silver'){
+					rank[i].style.color='silver';
+					rank[i].style.fontWeight='bold';
+					rank[i].innerHTML='SILVER';
+				}
+				else if(rank[i].innerHTML == 'bronze'){
+					rank[i].style.color='brown';
+					rank[i].style.fontWeight='bold';
+					rank[i].innerHTML='BRONZE';
+				}
+				else{
+					rank[i].style.color='black';
+					rank[i].style.fontWeight='bold';
+					rank[i].innerHTML='IRON';
+				}
+			};
+		});
+	</script>
+</body>
+</html>

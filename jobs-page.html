@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<meta charset="UTF-8">
+	<title>NVKD - Jobs Page</title>
+
+	<style>
+		.exit{
+			color: red;
+		}
+		.card-title.exit{
+			font-weight: bold;
+		}
+		.kotak{
+			padding-top: 15px;
+		}
+		.card{
+			border-radius: 10px;
+		}
+		.kartuku{
+			background-color: #4db6ac;
+			height: 306px; 
+			overflow: auto;
+			border-radius: 10px;
+		}
+		.card .card-reveal{
+			background-color: #4db6ac;
+		}
+		.l-uj{
+			padding: 7px 0 7px 30px;
+		}
+		.l-um{
+			padding-right: 25px;
+		}
+		.l-btn-testing{
+			margin: 10px 0 10px 75px;
+		}
+		.l-btn-upg{
+			margin: 10px 0 10px 50px;
+		}
+		@media only screen and (max-width: 601px){
+			.kartuku{
+				height: 150px;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<div class="navbar-fixed">
+	<nav class="teal darken-2">
+		<div class="nav-wrapper">
+			<a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			<a href="jobs-page.html" class="brand-logo hide-on-med-and-down"><img src="images/logo3.png" alt="logo1" width="30%"></a>
+			<a href="jobs-page.html" class="brand-logo hide-on-large-only center"><img src="images/logo3.png" alt="logo1" width="31%"></a>
+			<ul class="right hide-on-med-and-down">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="jobs-page.html">Jobs</a></li>
+				<li><a href="sso.html">Register</a></li>
+				<li><a href="login-form.html">Login</a></li>
+				<li><a href="admin-page.html">Admin</a></li>
+				<li><a href="index.html" onclick="logOut(event)">Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+	</div>
+	<ul class="sidenav teal lighten-5" id="mobile-nav">
+		<li><a href="jobs-page.html" class="brand-logo hide-on-large-only center"><img src="images/logo3.png" alt="logo1" width="31%"></a></li>
+        <li><a href="index.html" class="text-nav">Home</a></li>
+        <li><a href="jobs-page.html" class="text-nav">Jobs</a></li>
+        <li><a href="sso.html" class="text-nav">Register</a></li>
+        <li><a href="login-form.html" class="text-nav">Login</a></li>
+        <li><a href="admin-page.html" class="text-nav">Admin</a></li>
+        <li><a href="index.html" onclick="logOut(event)">Logout</a></li>
+    </ul>
+
+	<div class="teal lighten-5 kotak">
+
+		<div id="modal-ep" class="modal">
+            <div class="modal-content" style="text-align:center;">
+                <h4>Edit Profile</h4>
+                <div class="row">
+                  	<div class="col s12">
+                    	<div class="input-field">
+                      		<input placeholder="New Full Name" id="fullname-new" type="text" class="validate">
+                      		<label for="fullname-new">New Full Name</label>
+                    	</div>
+                    	<div class="input-field">
+                      		<input placeholder="New Address" id="address-new" type="text" class="validate">
+                      		<label for="address-new">New Address</label>
+                    	</div>
+                    	<div class="input-field">
+                      		<input placeholder="New Phone" id="phone-new" type="text" class="validate">
+                      		<label for="phone-new">New Phone</label>
+                    	</div>
+                  	</div>
+                </div>
+            </div>
+            <div style="text-align:center; margin-bottom: 15px;">
+                <a class="modal-close waves-effect waves-green btn">Cancel</a>
+                <a class="modal-close waves-effect waves-green btn">Submit</a>
+            </div>
+        </div>
+
+		<div id="modal-pj" class="modal">
+            <div class="modal-content" style="text-align:center;">
+                <h4>New Job</h4>
+                <div class="row">
+                    <div class="col s12">
+                    	<div class="input-field">
+                      		<input placeholder="Job Title" id="job-title" type="text" class="validate">
+                      		<label for="job-title">Job Title</label>
+                      	</div>
+	                    <div class="input-field">
+	                      	<input placeholder="Job Description" id="job-description" type="email" class="validate">
+	                      	<label for="job-description">Job Description</label>
+	                    </div>
+	                    <div class="input-field">
+	                      	<input placeholder="150" id="job-reward" type="number" class="validate">
+	                      	<label for="job-reward">Job Reward ($ in USD) </label>
+	                    </div>
+	                    	<div style="text-align: left;">
+	                    	<label>Job Required Rank</label>
+	                    	<select id="job-rank" name="job-rank" class="browser-default" style="margin-top: 5px;">
+			                    <option value="Iron" selected>Iron</option>
+			                    <option value="Silver">Silver</option>
+			                    <option value="Gold">Gold</option>
+			                    <option value="Platinum">Platinum</option>
+	                    	</select>
+	                    </div>
+	                </div>
+                </div>
+            </div>
+
+           	<div style="text-align:center; margin-bottom: 15px;">
+                <a class="modal-close waves-effect waves-green btn">Cancel</a>
+                <a class="modal-close waves-effect waves-green btn">Submit</a>
+            </div>
+        </div>
+
+
+		<div class="row" style="margin-bottom: 0; padding-bottom: 20px;">
+		    <div class="col s12 m4 offset-m1">
+		        <div class="card teal lighten-5">
+		        <div class="card-image">
+		            <img src="yoi.jpeg" style="width: 250px; margin: auto; padding-top: 5px;">
+		            <!-- <span class="card-title">HELLO</span> -->
+		            <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger" data-target='modal-ep'><i class="material-icons">edit</i></a>
+		        </div>
+		        <div class="card-content">
+		            <p><b>Nama:</b> <span id="nama"> Resa Fajar Sukma</span></p>
+		            <p><b>Rank:</b> <span id="rank">platinum</span></p>
+		            <p><b>Tipe:</b> <span id="tipe"> Member</span></p>
+		            <p><b>NIK:</b> <span id="NIK"> 1249871419812</span></p>
+		            <p><b>Alamat:</b> <span id="alamat"> Dimana aja 30, Indonesia</span></p>
+		            <p><b>Email:</b> <span id="email"> rejars66@gmail.com</span></p>
+		            <p><b>Telp:</b> <span id="telepon"> -</span></p>
+		            <p><b>Handphone:</b> <span id="handphone"> +628123456789</span></p>
+		            <!-- E = Earn, R = Required, J = Job, M = Money -->
+		            <p class="l-uj"><b>Clear Jobs:</b> <span id="ej">0</span>/<span id="rj" class="l-um">5</span><b> Earn Money:</b> <span id="em">0</span>/<span id="rm">1000</span></p>
+		            <span class="btn l-btn-testing" onclick='maxRequire()'>Click here for testing.</span><span class="btn l-btn-upg modal-trigger" onclick="upgRank()">Click here for upgrade rank.</span>
+		        </div>
+		        </div>
+		    </div>
+
+		    <div class="col hide-on-small-only m6">
+		    	<p style="text-align: center; font-weight: bold; color: #f06292; font-size: 35px;">Hey, <span id="nama2">Resa Fajar Sukma!</span></p>
+		    	<p style="text-align: center; font-weight: bold; color: #f06292; font-size: 20px;">History</p>
+			    <div class="row center" style="margin-left: 10px;">
+                    <div class="card">
+                        <div class="card-content col s3">
+                   		    <p style="font-size: 25px; color: #4db6ac; padding-left: 14px"><b><span id="pj">6</span></b></p>
+                        	<p style="font-size: 20px; color: #4db6ac; padding-left: 15px;">Posted Jobs</p>
+                        </div>
+                      	<div class="card-content col s3 offset-m1">
+                        	<p style="font-size: 25px; color: #4db6ac;"><b><span id="fj">25</span></b></p>
+                        	<p style="font-size: 20px; color: #4db6ac;">Finished Jobs</p>
+                      	</div>
+                      	<div class="card-content col s3 offset-m1">
+                        	<p style="font-size: 25px; color: #4db6ac;"><b><span id="earn">$5500</span></b></p>
+                        	<p style="font-size: 20px; color: #4db6ac;">Earnings</p>
+                      	</div>
+                    </div>
+                </div>
+		    </div>
+
+		    <div class="col hide-on-large-only center" style="padding-left: 40px">
+		    	<p style="font-weight: bold; color: #f06292; font-size: 35px;">Hey, <span id="nama3">Resa Fajar Sukma!</span></p>
+		    	<p style="font-weight: bold; color: #f06292; font-size: 20px;">History</p>
+			    <div class="row center" style="margin-left: 10px;">
+                    <div class="card-content col s12">
+               		    <p style="font-size: 25px; color: #4db6ac;"><b><span id="pj2">6</span></b></p>
+                    	<p style="font-size: 20px; color: #4db6ac;">Posted Jobs</p>
+                    </div>
+                  	<div class="card-content col s12">
+                    	<p style="font-size: 25px; color: #4db6ac;"><b><span id="fj2">25</span></b></p>
+                    	<p style="font-size: 20px; color: #4db6ac;">Finished Jobs</p>
+                  	</div>
+                  	<div class="card-content col s12">
+                    	<p style="font-size: 25px; color: #4db6ac;"><b><span id="earn2">$5500</span></b></p>
+                    	<p style="font-size: 20px; color: #4db6ac;">Earnings</p>
+                  	</div>
+                </div>
+		    </div>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<ul class="tabs blue lighten-4">
+	        <li class="tab col s4" style="border: 1px solid #fff; border-top: 0;"><a class="active" href="#posted" style="color: #000;">Posted</a></li>
+	        <li class="tab col s4" style="border: 1px solid #fff; border-top: 0;"><a href="#taken" style="color: #000;">Taken</a></li>
+	        <li class="tab col s4" style="border: 1px solid #fff; border-top: 0;"><a href="#finished" style="color: #000;">Finished</a></li>
+	    </ul>
+	</div>
+
+
+	<div id="posted">
+
+		<div class="container">
+
+
+
+			<div class="row">
+				<div class="posted-jobs">
+					<a class="modal-trigger" data-target='modal-pj'>
+						<span>
+						<span style="font-size: 20px;">Posting Job</span>
+						<i class="material-icons" style="cursor: pointer;">add_circle_outline</i>
+						</span>
+					</a>
+			    	<h3 class="center-align" style="font-weight: bold;">Jobs Available</h3>
+			    </div>
+
+			    <div class="col s12 m6">
+			    	<div class="card kartuku">
+			        	<div class="card-content">
+			            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+			            	<p><b>Requirentment skill:</b> Programming</p><br>
+			            	<p><b>Rank: </b><span class="rank">gold</span></p><br>
+			            	<p><b>Request:</b> Make a companion page.</p><br>
+			            	<!-- <ol type="1">
+			            		<li>Make a companion page.</li>
+			            	</ol> -->
+			            	<p><b>Click the title for detail.</b></p>
+			          	</div>
+			          	<div class="card-reveal">
+	      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+	      					<p><b>Detail:</b> Page for telling about our company.</p>
+					        <p><b>Rank:</b> <span class="rank">gold</span></p>
+					        <p><b>Reward:</b> $4,000</p>
+					        <p><b>Issuer:</b> Resa Fajar S.</p>
+					        <p><b>Time limit:</b> 4 Hours</p>
+					        <p><b>Status:</b> Waiting</p>
+						  	<p class="card-title exit">Close</p>
+	  	  				</div>
+			        </div>
+			    </div>
+
+			    <div class="col s12 m6">
+			    	<div class="card kartuku">
+			        	<div class="card-content">
+			            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+			            	<p><b>Requirentment skill:</b> Programming</p><br>
+			            	<p><b>Rank: </b><span class="rank">platinum</span></p><br>
+			            	<p><b>Request:</b> Make a companion page.</p><br>
+			            	<!-- <ol type="1">
+			            		<li>Make a companion page.</li>
+			            	</ol> -->
+			            	<p><b>Click the title for detail.</b></p>
+			          	</div>
+			          	<div class="card-reveal">
+	      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+	      					<p><b>Detail:</b> Page for telling about our company.</p>
+					        <p><b>Rank:</b> <span class="rank">platinum</span></p>
+					        <p><b>Reward:</b> $4,000</p>
+					        <p><b>Issuer:</b> Resa Fajar S.</p>
+					        <p><b>Time limit:</b> 4 Hours</p>
+					        <p><b>Status:</b> Waiting</p>
+						  	<p class="card-title exit">Close</p>
+	  	  				</div>
+			        </div>
+			    </div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="taken">
+		
+		<div class="container">
+
+			<div class="row">
+				<div class="posted-jobs">
+			    	<h3 class="center-align" style="font-weight: bold;">Jobs Taken</h3>
+			    </div>
+
+			    <div class="col s12 m6">
+			    	<div class="card kartuku">
+			        	<div class="card-content">
+			            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+			            	<p><b>Requirentment skill:</b> Programming</p><br>
+			            	<p><b>Rank: </b><span class="rank">gold</span></p><br>
+			            	<p><b>Request:</b> Make a companion page.</p><br>
+			            	<!-- <ol type="1">
+			            		<li>Make a companion page.</li>
+			            	</ol> -->
+			            	<p><b>Click the title for detail.</b></p>
+			          	</div>
+			          	<div class="card-reveal">
+	      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+	      					<p><b>Detail:</b> Page for telling about our company.</p>
+					        <p><b>Rank:</b> <span class="rank">gold</span></p>
+					        <p><b>Reward:</b> $4,000</p>
+					        <p><b>Issuer:</b> Resa Fajar S.</p>
+					        <p><b>Time limit:</b> 4 Hours</p>
+					        <p><b>Status:</b> Waiting</p>
+						  	<p class="card-title exit">Close</p>
+	  	  				</div>
+			        </div>
+			    </div>
+
+			    <div class="col s12 m6">
+			    	<div class="card kartuku">
+			        	<div class="card-content">
+			            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+			            	<p><b>Requirentment skill:</b> Programming</p><br>
+			            	<p><b>Rank: </b><span class="rank">platinum</span></p><br>
+			            	<p><b>Request:</b> Make a companion page.</p><br>
+			            	<!-- <ol type="1">
+			            		<li>Make a companion page.</li>
+			            	</ol> -->
+			            	<p><b>Click the title for detail.</b></p>
+			          	</div>
+			          	<div class="card-reveal">
+	      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+	      					<p><b>Detail:</b> Page for telling about our company.</p>
+					        <p><b>Rank:</b> <span class="rank">platinum</span></p>
+					        <p><b>Reward:</b> $4,000</p>
+					        <p><b>Issuer:</b> Resa Fajar S.</p>
+					        <p><b>Time limit:</b> 4 Hours</p>
+					        <p><b>Status:</b> Waiting</p>
+						  	<p class="card-title exit">Close</p>
+	  	  				</div>
+			        </div>
+			    </div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="finished">
+		
+		<div class="container">
+
+			<div class="row">
+				<div class="posted-jobs">
+			    	<h3 class="center-align" style="font-weight: bold;">Jobs Finished</h3>
+			    </div>
+
+			    <div class="col s12 m6">
+			    	<div class="card kartuku">
+			        	<div class="card-content">
+			            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+			            	<p><b>Requirentment skill:</b> Programming</p><br>
+			            	<p><b>Rank: </b><span class="rank">gold</span></p><br>
+			            	<p><b>Request:</b> Make a companion page.</p><br>
+			            	<!-- <ol type="1">
+			            		<li>Make a companion page.</li>
+			            	</ol> -->
+			            	<p><b>Click the title for detail.</b></p>
+			          	</div>
+			          	<div class="card-reveal">
+	      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+	      					<p><b>Detail:</b> Page for telling about our company.</p>
+					        <p><b>Rank:</b> <span class="rank">gold</span></p>
+					        <p><b>Reward:</b> $4,000</p>
+					        <p><b>Issuer:</b> Resa Fajar S.</p>
+					        <p><b>Time limit:</b> 4 Hours</p>
+					        <p><b>Status:</b> Waiting</p>
+						  	<p class="card-title exit">Close</p>
+	  	  				</div>
+			        </div>
+			    </div>
+
+			    <div class="col s12 m6">
+			    	<div class="card kartuku">
+			        	<div class="card-content">
+			            	<span class="card-title activator" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+			            	<p><b>Requirentment skill:</b> Programming</p><br>
+			            	<p><b>Rank: </b><span class="rank">platinum</span></p><br>
+			            	<p><b>Request:</b> Make a companion page.</p><br>
+			            	<!-- <ol type="1">
+			            		<li>Make a companion page.</li>
+			            	</ol> -->
+			            	<p><b>Click the title for detail.</b></p>
+			          	</div>
+			          	<div class="card-reveal">
+	      					<span class="card-title" style="text-align: center; color: blue; font-weight: bold;">Make Page Website</span>
+	      					<p><b>Detail:</b> Page for telling about our company.</p>
+					        <p><b>Rank:</b> <span class="rank">platinum</span></p>
+					        <p><b>Reward:</b> $4,000</p>
+					        <p><b>Issuer:</b> Resa Fajar S.</p>
+					        <p><b>Time limit:</b> 4 Hours</p>
+					        <p><b>Status:</b> Waiting</p>
+						  	<p class="card-title exit">Close</p>
+	  	  				</div>
+			        </div>
+			    </div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<footer class="page-footer teal darken-2">
+        <div class="container">
+      	    <div class="row">
+          		<div class="col l6 s12">
+            		<h5 class="white-text">Alamat kantor</h5>
+            		<p class="grey-text text-lighten-4" style="font-size: 15px;"><i class="material-icons" style="font-size: 15px;">location_on</i> JL. Jalanin aja no 21, Cijantung, Jakarta Timur, Jakarta.</p>
+          		</div>
+          		<div class="col l4 offset-l2 s12">
+            		<h5 class="white-text">Contacts</h5>
+	              		<a class="grey-text text-lighten-3" href="#"><i class="material-icons" style="font-size: 31px;">email</i></a>
+	              		<a href="#"><img src="images/icon-fb.png" alt="icon-fb" width="10%"></a>
+	              		<a href="#"><img src="images/icon-tw.png" alt="icon-twitter" width="10%"></a>
+	              		<a href="#"><img src="images/icon-ig.png" alt="icon-ig" width="10%"></a>
+	            	
+	          	</div>
+        	</div>
+      	</div>
+      	<div class="footer-copyright center">
+        	<div class="container">
+        		©2020 Copyright NVKD
+        	</div>
+      	</div>
+    </footer>
+
+
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function(){
+			var name = sessionStorage.getItem("fullName");
+	        if (name){
+	          	var username = sessionStorage.getItem("username");
+	          	var type = sessionStorage.getItem("tipe");
+	          	var address = sessionStorage.getItem("address");
+	          	var handphone = sessionStorage.getItem("handphone");
+	          	var nik = sessionStorage.getItem("NIK");
+	          	var email = sessionStorage.getItem("email");
+
+	          	var htmlname = document.querySelector('#nama');
+	          	var htmlname2 = document.querySelector('#nama2');
+	          	var htmlname3 = document.querySelector('#nama3');
+	          	// var htmluname = document.querySelector('#username');
+	          	var htmltype = document.querySelector('#tipe');
+	          	var htmlrank = document.querySelector('#rank');
+	          	htmlrank.innerHTML = 'iron';
+	          	changeRank(htmlrank);
+	          	var htmladdress = document.querySelector('#alamat');
+	          	var htmlphone = document.querySelector('#handphone');
+	          	var htmlnik = document.querySelector('#NIK');
+	          	var htmlemail = document.querySelector('#email');
+	          	var pj = document.querySelector('#pj');
+	          	var fj = document.querySelector('#fj');
+	          	var earn = document.querySelector('#earn');
+	          	pj.innerHTML = 0;
+	          	fj.innerHTML = 0;
+	          	earn.innerHTML = 0;
+	          	var pj2 = document.querySelector('#pj2');
+	          	var fj2 = document.querySelector('#fj2');
+	          	var earn2 = document.querySelector('#earn2');
+	          	pj2.innerHTML = 0;
+	          	fj2.innerHTML = 0;
+	          	earn2.innerHTML = 0;
+	          
+	          	htmlname.textContent = name.toUpperCase();
+	          	htmlname2.innerHTML = name.toUpperCase() + ' !';
+	          	htmlname3.innerHTML = name.toUpperCase() + ' !';
+	          	// htmluname.innerHTML = username;
+	          	htmltype.innerHTML = type.toUpperCase();
+	          	htmladdress.innerHTML = address.toUpperCase();
+	          	htmlphone.innerHTML = handphone.toUpperCase();
+	          	htmlnik.innerHTML = nik.toUpperCase();
+	          	htmlemail.innerHTML = email.toUpperCase();
+	        }
+
+        const element = document.querySelectorAll('.tabs');
+		const instance = M.Tabs.init(element[0], {});
+		const instance1 = M.Tabs.init(element[1], {});
+		const instance2 = M.Tabs.init(element[2], {});
+		const elems2 = document.querySelectorAll('.modal');
+        const instances3 = M.Modal.init(elems2, {});
+        const elems3 = document.querySelectorAll('.sidenav');
+        const instances4 = M.Sidenav.init(elems3, {});
+	});
+
+
+		function maxRequire(){
+			var rank = document.querySelector('#rank');
+			if(rank.innerHTML != 'PLATINUM'){
+				var rj = document.querySelector('#rj');
+				var ej = document.querySelector('#ej');
+				ej.innerHTML = rj.innerHTML;
+				var rm = document.querySelector('#rm');
+				var em = document.querySelector('#em');
+				em.innerHTML = rm.innerHTML;
+			}
+			else{
+				var rm = document.querySelector('#rm');
+				var rj = document.querySelector('#rj');
+				rm.innerHTML = 0;
+				rj.innerHTML = 0;
+				alert("Anda sudah mendapatkan rank tertinggi.")
+			}
+		}
+
+		function upR() {
+			var rank = document.querySelector('#rank');
+			var ej = document.querySelector('#ej');
+			var em = document.querySelector('#em');
+			if(rank.innerHTML == 'IRON'){
+				rank.innerHTML = 'bronze';
+				ej.innerHTML = 0;
+				em.innerHTML = 0;
+			}
+			else if(rank.innerHTML == 'BRONZE'){
+				rank.innerHTML = 'silver';
+				ej.innerHTML = 0;
+				em.innerHTML = 0;
+			}
+			else if(rank.innerHTML == 'SILVER'){
+				rank.innerHTML = 'gold';
+				ej.innerHTML = 0;
+				em.innerHTML = 0;
+			}
+			else if(rank.innerHTML == 'GOLD'){
+				rank.innerHTML = 'platinum';
+				ej.innerHTML = 0;
+				em.innerHTML = 0;
+			}
+			changeRank(rank)
+		}
+
+		function upgRank(){
+			var rj = document.querySelector('#rj');
+			var ej = document.querySelector('#ej');
+			var rm = document.querySelector('#rm');
+			var em = document.querySelector('#em');
+			var rank = document.querySelector('#rank');
+			if(rank.innerHTML != 'PLATINUM' & rj.innerHTML <= ej.innerHTML & rm.innerHTML <= em.innerHTML & rm.innerHTML != '0'){
+				var fj = document.querySelector('#fj');
+				var fj2 = document.querySelector('#fj2');
+				var f = Number(fj.innerHTML);
+				var f2 = Number(fj2.innerHTML);
+				var j = Number(rj.innerHTML);
+				rj.innerHTML = j + 5;
+				fj.innerHTML = f + j;
+				fj2.innerHTML = f2 + j;
+				var earn = document.querySelector('#earn');
+				var earn2 = document.querySelector('#earn2');
+				
+				if(earn.innerHTML[0] == '$'){
+					var e = Number(earn.innerHTML.substring(1));
+					var e2 = Number(earn2.innerHTML.substring(1));	
+					earn.innerHTML = "$" + (e + Number(rm.innerHTML));
+					earn2.innerHTML = "$" + (e2 + Number(rm.innerHTML));
+					}
+				else{
+					var e = Number(earn.innerHTML);
+					var e2 = Number(earn2.innerHTML);
+					earn.innerHTML = e + Number(rm.innerHTML);
+					earn2.innerHTML = e2 + Number(rm.innerHTML);
+					}
+
+				
+				var m = Number(rm.innerHTML);	
+				rm.innerHTML = m + 500;
+				upR();
+				alert("Selamat anda telah naik ranking, kami sudah mengirimkan email kepada anda.");
+			}
+			else if(rank.innerHTML == 'PLATINUM'){
+				alert("Anda sudah mendapatkan rank tertinggi.");
+			}
+			else{
+				alert("Anda belum memenuhi kriteria.");
+			}
+		}
+
+		function logOut(event){
+	        event.preventDefault();
+	        sessionStorage.clear();
+	        window.location.href = "index.html";
+      	}
+
+		function changeRank(rank){
+			if(rank.innerHTML == 'platinum'){
+				rank.style.color='rgb(200,200,200)';
+				rank.style.fontWeight='bold';
+				rank.innerHTML='PLATINUM';
+			}
+			else if(rank.innerHTML == 'gold'){
+				rank.style.color='gold';
+				rank.style.fontWeight='bold';
+				rank.innerHTML='GOLD';
+			}
+			else if(rank.innerHTML == 'silver'){
+				rank.style.color='silver';
+				rank.style.fontWeight='bold';
+				rank.innerHTML='SILVER';
+			}
+			else if(rank.innerHTML == 'bronze'){
+				rank.style.color='brown';
+				rank.style.fontWeight='bold';
+				rank.innerHTML='BRONZE';
+			}
+			else if(rank.innerHTML == 'iron'){
+				rank.style.color='black';
+				rank.style.fontWeight='bold';
+				rank.innerHTML='IRON';
+			}
+		}
+
+		var rank1 = document.querySelectorAll('.rank');
+
+		for(let i = 0; i < rank1.length; i++){
+			changeRank(rank1[i]);
+		}
+
+		const u_rank = document.querySelector('#rank');
+		changeRank(u_rank);
+	</script>
+</body>
+</html>
